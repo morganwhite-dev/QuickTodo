@@ -97,6 +97,29 @@ There are no accounts, no external servers, and no required cloud connection. Ta
 
 ---
 
+## Screenshots
+
+### Main Dashboard
+
+![QuickTodo main dashboard](screenshots/main-dashboard.png)
+
+### Quick Add
+
+![QuickTodo quick add](screenshots/quick-add.png)
+![QuickTodo quick add](screenshots/quick-add-result.png)
+
+### Settings
+
+![QuickTodo settings](screenshots/settings-panel.png)
+
+### Help Screen
+
+![QuickTodo help screen](screenshots/help-function.png)
+
+### Onboarding
+
+![QuickTodo onboarding](screenshots/onboarding.png)
+
 ## Built With
 
 * Swift
