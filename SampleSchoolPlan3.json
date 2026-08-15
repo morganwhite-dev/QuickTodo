@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Quiz 1",
+    "course": "CIS 2010",
+    "module": "Module 2",
+    "dueDate": "2026-07-08",
+    "dueTime": "09:00",
+    "type": "Quiz",
+    "priority": "High",
+    "materialsNeeded": [
+      "Review Chapters 1-2"
+    ],
+    "source": "Brightspace > Module 2 > Quizzes",
+    "notes": "Timed, 20 minutes once started."
+  },
+  {
+    "title": "Discussion: Cell Biology",
+    "course": "BIO 1010",
+    "module": "Module 4",
+    "dueDate": "2026-07-12",
+    "dueTime": "23:59",
+    "type": "Discussion",
+    "priority": "Medium",
+    "materialsNeeded": [
+      "Watch Module 4 lecture"
+    ],
+    "notes": "Reply to at least one classmate."
+  },
+  {
+    "title": "Problem Set 2",
+    "course": "MATH 1310",
+    "module": "Module 2",
+    "dueDate": "2026-07-14",
+    "dueTime": "23:59",
+    "type": "Assignment",
+    "priority": "High",
+    "materialsNeeded": [
+      "Calculator",
+      "Section 2.3-2.5 notes"
+    ],
+    "notes": "Show all work for partial credit."
+  },
+  {
+    "title": "Buy a planner",
+    "module": null,
+    "dueDate": "2026-07-01",
+    "dueTime": null,
+    "type": "Errand",
+    "priority": "Low",
+    "notes": "For tracking due dates manually as backup."
+  }
+]

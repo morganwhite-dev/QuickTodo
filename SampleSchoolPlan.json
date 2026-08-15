@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Discussion Post 1",
+    "course": "CIS 2010",
+    "module": "Module 1",
+    "dueDate": "2026-06-29",
+    "dueTime": "23:59",
+    "type": "Discussion",
+    "priority": "Medium",
+    "materialsNeeded": [
+      "Read Chapter 1",
+      "Watch Module 1 lecture"
+    ],
+    "source": "Brightspace > Module 1 > Discussion Board 1",
+    "notes": "Initial post due before replies."
+  },
+  {
+    "title": "Read Chapter 3: Cellular Respiration",
+    "course": "BIO 1010",
+    "module": "Module 3",
+    "dueDate": "2026-07-03",
+    "dueTime": null,
+    "type": "Reading",
+    "priority": "Low",
+    "materialsNeeded": [
+      "Textbook Chapter 3",
+      "Lecture slides"
+    ],
+    "source": "Brightspace > Module 3 > Readings",
+    "notes": "No submission required, but quiz next week covers this."
+  },
+  {
+    "title": "Final Project Proposal",
+    "course": "ART 2200",
+    "module": "Module 6",
+    "dueDate": "2026-07-10",
+    "dueTime": "17:00",
+    "type": "Assignment",
+    "priority": "High",
+    "materialsNeeded": [
+      "Project proposal template",
+      "Rubric"
+    ],
+    "source": "Brightspace > Module 6 > Final Project",
+    "notes": "Syllabus and Brightspace calendar disagree on the due date — confirm with professor."
+  }
+]

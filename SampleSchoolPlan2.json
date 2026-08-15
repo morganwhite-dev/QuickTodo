@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Discussion Post 2",
+    "course": "CIS 2010",
+    "module": "Module 2",
+    "dueDate": "2026-07-15",
+    "dueTime": "23:59",
+    "type": "Discussion",
+    "priority": "Medium",
+    "materialsNeeded": [
+      "Read Chapter 2",
+      "Watch Module 2 lecture"
+    ],
+    "source": "Brightspace > Module 2 > Discussion Board 2",
+    "notes": "Reply to two classmates after posting."
+  },
+  {
+    "title": "Lab Report 1",
+    "course": "BIO 1010",
+    "module": "Module 4",
+    "dueDate": "2026-07-17",
+    "dueTime": "17:00",
+    "type": "Assignment",
+    "priority": "High",
+    "materialsNeeded": [
+      "Lab report template",
+      "Raw data from Lab 1"
+    ],
+    "source": "Brightspace > Module 4 > Lab Reports",
+    "notes": "Include error analysis section."
+  },
+  {
+    "title": "Sketch Assignment 3",
+    "course": "ART 2200",
+    "module": "Module 7",
+    "dueDate": "2026-07-20",
+    "dueTime": null,
+    "type": "Assignment",
+    "priority": "Low",
+    "materialsNeeded": [
+      "Sketchbook",
+      "Graphite pencils"
+    ],
+    "source": "Brightspace > Module 7 > Studio Work",
+    "notes": "Bring to next critique session."
+  }
+]
