@@ -119,15 +119,14 @@ final class NextMoveEngineTests: XCTestCase {
 
     // MARK: - suggested()
 
-    func testSuggestedRanksOverdueAboveDueSoonAboveNoSignal() {
+    func testSuggestedOrdersByDueDateWithUndatedTasksLast() {
         let overdue = TaskItem(title: "Overdue", dueDate: now.addingTimeInterval(-3600), category: "General", priority: .low, stage: .general)
         let dueSoon = TaskItem(title: "Due soon", dueDate: now.addingTimeInterval(2 * 3600), category: "General", priority: .low, stage: .general)
         let noSignal = TaskItem(title: "No signal", category: "General", priority: .low, stage: .general)
-        let all = [overdue, dueSoon, noSignal]
+        let all = [noSignal, dueSoon, overdue]
 
         let suggested = NextMoveEngine.suggested(from: all, in: all, limit: 5, now: now)
-        XCTAssertEqual(suggested.map(\.id), [overdue.id, dueSoon.id])
-        XCTAssertFalse(suggested.contains { $0.id == noSignal.id })
+        XCTAssertEqual(suggested.map(\.id), [overdue.id, dueSoon.id, noSignal.id])
     }
 
     func testSuggestedRespectsLimit() {
