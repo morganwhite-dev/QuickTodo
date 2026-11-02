@@ -155,7 +155,8 @@ extension ImportedSchoolTask {
         guard dateParts.count == 3,
               let year  = Int(dateParts[0]),
               let month = Int(dateParts[1]),
-              let day   = Int(dateParts[2]) else { return nil }
+              let day   = Int(dateParts[2]),
+              (1...12).contains(month), (1...31).contains(day) else { return nil }
 
         // Default to noon when no time is supplied.
         var hour = 12, minute = 0
@@ -164,7 +165,8 @@ extension ImportedSchoolTask {
             let timeParts = trimmedTime.split(separator: ":")
             if timeParts.count >= 2,
                let h = Int(timeParts[0]),
-               let m = Int(timeParts[1]) {
+               let m = Int(timeParts[1]),
+               (0...23).contains(h), (0...59).contains(m) {
                 hour = h; minute = m
             }
         }
@@ -176,7 +178,13 @@ extension ImportedSchoolTask {
         comps.hour       = hour
         comps.minute     = minute
         comps.second     = 0
-        return Calendar.current.date(from: comps)
+        // Calendar is lenient ("2026-02-31" becomes March 3), so confirm the date
+        // round-trips and send anything that doesn't to "Needs Review".
+        let calendar = Calendar.current
+        guard let date = calendar.date(from: comps),
+              calendar.component(.day, from: date) == day,
+              calendar.component(.month, from: date) == month else { return nil }
+        return date
     }
 }
 

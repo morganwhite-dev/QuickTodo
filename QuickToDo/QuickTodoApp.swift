@@ -71,7 +71,7 @@ struct QuickTodoApp: App {
 
     // MARK: - Deep Link Handler
 
-    // Handles quicktodo://complete?title=POLS%204110%3A%20Read%20Chapters%205-6
+    // Handles quicktodo://complete?title=ENGL%20101%3A%20Read%20Chapters%205-6
     // Matches tasks by their stored title (which includes the "COURSE: " prefix added
     // at import time). Case-insensitive so minor capitalisation differences don't matter.
     @MainActor
@@ -90,7 +90,7 @@ struct QuickTodoApp: App {
         )) ?? []
 
         // Optional course param disambiguates tasks that share a title across courses
-        // (e.g. "Study for Final Exam" in both Political Psychology & Civil Liberties).
+        // (e.g. "Study for Final Exam" in both English Composition & Intro Psychology).
         let courseParam = components.queryItems?.first(where: { $0.name == "course" })?.value
 
         guard let task = allTasks.first(where: {

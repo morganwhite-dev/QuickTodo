@@ -64,7 +64,7 @@ Every feature is explained step by step in [docs/features.md](docs/features.md).
 - **Lists.** Browse tasks by list. Create, recolor, delete, and reorder lists.
 - **Dependencies.** Mark a task as waiting on another task, and it stays locked until the first one is done. Next Move skips locked tasks, so you only see what you can do now. See [how dependencies work](docs/features.md#dependencies).
 - **Step suggestions.** On Macs that support Apple Intelligence, QuickToDo can suggest 3 to 5 checklist steps for a task. It runs on your Mac. If your Mac doesn't support it, the feature stays hidden.
-- **Reminders.** Tasks with due dates can send reminders through macOS notifications.
+- **Reminders.** Tasks with due dates send macOS notifications on your Mac: one at the due time, your chosen reminders, and "Still not done" nudges as the deadline gets close. School plan imports get them too, so an upcoming assignment pings you without you checking the app. You can mark a task done or snooze it from the notification. See [Reminders and notifications](docs/features.md#reminders-and-notifications).
 - **Completed and Trash.** Finished tasks move to Completed. Deleted tasks sit in Trash for 30 days. Short Undo prompts appear after you complete or delete a task.
 - **School plan import.** Load a JSON file of assignments, preview them, and add them in one step. See [Importing a school plan](#importing-a-school-plan).
 - **Backup and restore.** Export everything to one JSON file, and bring it back later.
@@ -172,7 +172,6 @@ Everything stays on your Mac, and the app doesn't need an account.
 - **Back up:** Open Settings and click **Export Backup**. You get one file. Do this before you reinstall or move to a new Mac.
 - **Restore:** Open Settings and click **Import Backup**. Restoring replaces everything in the app, so QuickToDo asks you to confirm first.
 - **Start fresh:** Settings has a **Clear Everything** button. It skips Trash, so export a backup first.
-
 
 ## Project layout
 

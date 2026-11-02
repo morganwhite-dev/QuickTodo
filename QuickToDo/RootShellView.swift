@@ -842,8 +842,9 @@ struct RootShellView: View {
         if target <= Date() {
             let next = Date().addingTimeInterval(30 * 60)
             let minute = calendar.component(.minute, from: next)
+            // bySetting(.minute) already rolls forward to the next matching time, so a
+            // minute of 0 lands on the top of the next hour without any extra hour.
             target = calendar.date(bySetting: .minute, value: minute < 30 ? 30 : 0, of: next) ?? next
-            if minute >= 30 { target = calendar.date(byAdding: .hour, value: 1, to: target) ?? target }
         }
         guard calendar.isDate(target, inSameDayAs: day) else { return }
         NotificationManager.shared.cancel(for: task)

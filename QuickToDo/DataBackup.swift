@@ -29,7 +29,8 @@ private struct TaskBackup: Codable {
     var dependsOnTaskID: UUID?
     var progressPercent: Int?
     var deletedAt: Date?
-    var rescheduleCount: Int
+    // Optional so backups made before this field existed still restore.
+    var rescheduleCount: Int?
     var startedAt: Date?
 
     init(_ task: TaskItem) {
@@ -53,7 +54,7 @@ private struct TaskBackup: Codable {
             recurrenceRule: recurrenceRule, sortIndex: sortIndex, subtasks: subtasks,
             stage: stage ?? .general, estimatedMinutes: estimatedMinutes,
             dependsOnTaskID: dependsOnTaskID, progressPercent: progressPercent, deletedAt: deletedAt,
-            rescheduleCount: rescheduleCount, startedAt: startedAt
+            rescheduleCount: rescheduleCount ?? 0, startedAt: startedAt
         )
     }
 }
@@ -147,7 +148,7 @@ enum BackupManager {
             // The backup only restores data — it doesn't restore the actual system
             // notifications, which live outside SwiftData entirely. Without this, an
             // imported task could say it has a reminder and just never fire one.
-            if task.dueDate != nil, !task.isCompleted {
+            if task.dueDate != nil, !task.isCompleted, task.deletedAt == nil {
                 NotificationManager.shared.schedule(for: task)
             }
         }
