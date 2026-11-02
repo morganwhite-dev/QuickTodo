@@ -1,0 +1,44 @@
+[
+  {
+    "course": "Cloud Computing",
+    "title": "Test 3 Cloud data security",
+    "dueDate": "2026-11-03",
+    "dueTime": "17:30"
+  },
+  {
+    "course": "Cloud Computing",
+    "title": "e-News 3: Cloud and On-Premise Data Security",
+    "dueDate": "2026-11-03",
+    "dueTime": "17:30"
+  },
+  {
+    "course": "Network Security",
+    "title": "Lab 5 - Leverage Prompt Injection and Persona-Based Privilege Escalation in AI Chatbots",
+    "dueDate": "2026-11-04",
+    "dueTime": "22:00"
+  },
+  {
+    "course": "Network Security",
+    "title": "Week 3 Discussion",
+    "dueDate": "2026-11-04",
+    "dueTime": "23:59"
+  },
+  {
+    "course": "Cloud Computing",
+    "title": "Mid-Term Test",
+    "dueDate": "2026-11-06",
+    "dueTime": "18:30"
+  },
+  {
+    "course": "Network Security",
+    "title": "Lab 7 - Construct Native FGSM and PGD Attacks on Image Classifiers using TensorFlow",
+    "dueDate": "2026-11-11",
+    "dueTime": "22:00"
+  },
+  {
+    "course": "Network Security",
+    "title": "Exam 2",
+    "dueDate": "2026-11-19",
+    "dueTime": "19:00"
+  }
+]

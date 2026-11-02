@@ -1,0 +1,19 @@
+# Xcode
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+*.xcuserdatad
+
+# Swift / packages
+.build/
+.swiftpm/
+
+# macOS
+.DS_Store
+
+# Local generated files
+.codex-derived-data/
+
+# Test coverage output
+*.profraw

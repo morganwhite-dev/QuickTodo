@@ -1,0 +1,216 @@
+# QuickToDo
+
+QuickToDo is a task management app for macOS. It helps you get tasks out of your head, see what to do next, and plan time for the things you enjoy.
+
+## Table of contents
+
+- [Why I built this](#why-i-built-this)
+- [Who it is for](#who-it-is-for)
+- [What it does](#what-it-does)
+- [Coming next](#coming-next)
+- [Screenshots](#screenshots)
+- [How to run it](#how-to-run-it)
+- [How to use it in your own workflow](#how-to-use-it-in-your-own-workflow)
+- [Importing a school plan](#importing-a-school-plan)
+- [Your data](#your-data)
+- [Project layout](#project-layout)
+- [Running the tests](#running-the-tests)
+- [Feedback](#feedback)
+
+## Why I built this
+
+I have trouble focusing. A normal day throws a lot at me. A class deadline, an email, a chore, an idea I don't want to lose. When I can't sort it all, I freeze. I call it task paralysis. I stare at the list and do nothing.
+
+I built QuickToDo to fix that for myself. It's my own workflow, written as an app. I wanted three things:
+
+1. **Get things out of my head fast.** If capturing takes more than a few seconds, I skip it. So I can type a task in plain words from anywhere on my Mac.
+2. **See what matters next.** I don't want to pick from 40 items. I want the app to show me one task to start with, and tell me why.
+3. **Make room for things I enjoy.** Most to-do lists are all obligations. I plan free time on purpose, so rest and hobbies get a slot too.
+
+This isn't a medical tool. It doesn't treat or cure anything. It's just the setup that helps me get through my days.
+
+If it helps you too, I would love that. You're welcome to use it. You can also borrow any idea in it for your own workflow.
+
+## Who it is for
+
+QuickToDo is for anyone who wants a calm place to keep tasks. That includes:
+
+- Students who juggle classes and deadlines.
+- People who get overwhelmed when their task list gets long.
+- Anyone who wants to plan fun and rest next to work.
+
+You don't need to know how to code to use the app. Building it does take a few steps, and the guide below walks you through each one.
+
+## What it does
+
+- **Quick Add in plain language.** Type `essay friday 11:59pm #English !high` and QuickToDo sets the due date, the list, and the priority for you.
+- **Global shortcut.** Press Control, Option, Command and Space from any app to open a small Quick Add window.
+- **Menu bar quick add.** Click the QuickToDo icon in your menu bar to add a task without opening the main window.
+- **Detailed tasks.** Add notes, a due date, reminders, a time estimate, a priority, a list, and checklist steps. You can also make a task repeat daily, on weekdays, weekly, or monthly.
+- **Decision Board.** Your main screen. It shows four columns: Capture, Ready, Scheduled, and In Progress. You can sort them by recommendation, due date, priority, or your own order.
+- **Next Move card.** An amber card at the top of the board that shows the one task to do now. An overdue task comes first. If nothing is overdue, the soonest due task wins.
+- **Next Move reasons.** When you open a task, QuickToDo suggests an action such as Start Now, Schedule, Break Into Steps, File as Someday, or Quick Win. It lists the reasons, and it only uses details you entered.
+- **Focus window.** In Settings, you can set the hours you keep for focused work. Next Move mentions them when a high priority task fits.
+- **General.** An inbox for tasks with no due date. It sorts them into High, Medium, and Low lanes. Drag a task between lanes to change its priority.
+- **Today.** Shows what's overdue and what's due later today. It has a progress ring and an Up Next card.
+- **Upcoming.** A 7 day planner. It shows a timeline for each day. Gaps of 30 minutes or more show up as free time, with a Plan this time button.
+- **Week summary.** Shows how many tasks are done this week, how much work is left, and how your time splits across lists.
+- **Lists.** Browse tasks by list. Create, rename, recolor, delete, and reorder lists.
+- **Dependencies.** Mark a task as waiting on another task. QuickToDo won't let you finish it while the other one is open.
+- **Step suggestions.** On Macs that support Apple Intelligence, QuickToDo can suggest 3 to 5 checklist steps for a task. It runs on your Mac. If your Mac doesn't support it, the feature stays hidden.
+- **Reminders.** Tasks with due dates can send reminders through macOS notifications.
+- **Completed and Trash.** Finished tasks move to Completed. Deleted tasks sit in Trash for 30 days. Short Undo prompts appear after you complete or delete a task.
+- **School plan import.** Load a JSON file of assignments, preview them, and add them in one step. See [Importing a school plan](#importing-a-school-plan).
+- **Backup and restore.** Export everything to one JSON file, and bring it back later.
+- **Built in help.** A welcome tour and a Help window explain each screen. Open Help from the Help menu.
+
+Keyboard shortcuts are listed in [docs/keyboard-shortcuts.md](docs/keyboard-shortcuts.md).
+
+## Coming next
+
+I plan to add an import to calendar feature. The goal is to see my tasks and my calendar in one place, so I can plan around real commitments. It is not built yet, and nothing in the app does this today.
+
+## Screenshots
+
+### Decision Board
+
+![The Decision Board with the Next Move card and four columns](docs/screenshots/01-decision-board.png)
+
+The Decision Board shows the one task to do now, and the rest of my work in four columns.
+
+### General
+
+![The General screen with High, Medium and Low lanes](docs/screenshots/02-general.png)
+
+General is where loose tasks land. I sort them by priority when I have a minute.
+
+### Today
+
+![The Today screen with a progress ring and the Up Next card](docs/screenshots/03-today.png)
+
+Today shows only what's overdue or due later today.
+
+### Upcoming
+
+![The Upcoming planner with a day timeline and a free time block](docs/screenshots/04-upcoming.png)
+
+Upcoming shows the week. Free gaps in a day show up so I can plan something into them.
+
+### Lists
+
+![The Lists screen with the list rail and tasks grouped by due date](docs/screenshots/05-lists.png)
+
+Lists group tasks by area, such as a class, work, or personal.
+
+### Quick Capture
+
+![The Quick Capture window with a task typed in plain words](docs/screenshots/06-quick-capture.png)
+
+Quick Capture turns plain words into a task with a date, a list, and a priority.
+
+### Menu bar
+
+![The menu bar window with the Quick Add field](docs/screenshots/07-menu-bar.png)
+
+The menu bar window lets me add a task without leaving what I'm doing.
+
+### School plan import
+
+![The Import School Plan preview with a list of tasks to approve](docs/screenshots/08-school-import.png)
+
+The import preview lets me check every task before it's added.
+
+## How to run it
+
+You build QuickToDo yourself from the source code. This needs a Mac and Xcode. Xcode is Apple's free app for building Mac apps. You can get it from the Mac App Store.
+
+### Requirements
+
+- A Mac running macOS 26.0 or later.
+- Xcode. The project was created with Xcode 27.0, so use that version or newer.
+- About 15 minutes the first time.
+
+### Steps
+
+1. Install Xcode from the Mac App Store. Open it once and let it finish any setup.
+2. Download the project. On the GitHub page, click the green **Code** button. Choose **Download ZIP**, then unzip the file. If you know Git, you can clone it instead: `git clone https://github.com/morganwhite-dev/QuickTodo.git`.
+3. Open the folder you unzipped. Go into the `QuickToDo` folder inside it.
+4. Double click `QuickToDo.xcodeproj`. Xcode opens.
+5. At the top of the Xcode window, check that the scheme says `QuickTodo` and the destination says **My Mac**. The scheme name is spelled `QuickTodo` in the project. That's expected.
+6. Press the **Run** button, which is the play triangle at the top left. You can also press Command and R.
+7. Wait for the build to finish. The first build takes a minute or two. QuickToDo then opens.
+
+If Xcode shows a signing error, click the project name in the left sidebar. Open **Signing & Capabilities**. Under Team, pick your own Apple ID, or choose to sign the app to run locally.
+
+When you run QuickToDo from Xcode, it builds a debug version. The first time you launch it, it fills the app with example tasks so the screens aren't empty. You can clear them in Settings with **Clear Everything**.
+
+To keep the app, find it in Xcode under **Product, Show Build Folder in Finder**. You can then drag `QuickTodo.app` into your Applications folder.
+
+More detail is in [docs/getting-started.md](docs/getting-started.md).
+
+## How to use it in your own workflow
+
+This is the routine I follow. Take what helps and skip the rest.
+
+1. **Capture.** When a thought shows up, add it right away. Use Quick Add, the shortcut, or the menu bar. Don't sort it yet.
+2. **Check Next Move.** Open the Decision Board. Look at the amber card. Start that task.
+3. **Sort once a day.** Open General. Give loose tasks a priority or a due date. This takes a few minutes.
+4. **Plan the week.** Open Upcoming. Look at each day and the free time blocks. Once the calendar import I plan to build is ready, your calendar events will show up here too.
+5. **Protect personal time.** Add things you enjoy as real tasks with a time. Then they show up on your plan next to your work.
+6. **Close the day.** Check Today. Finish what you can. Move the rest to a day that has room.
+
+The full version, with examples, is in [docs/daily-workflow.md](docs/daily-workflow.md).
+
+## Importing a school plan
+
+If you have a list of assignments, you can import them from a JSON file. Only `title` is required. A sample file is in [samples/sample-school-plan.json](samples/sample-school-plan.json), and [samples/README.md](samples/README.md) explains it.
+
+To import, open Settings, find **Import School Plan**, and click **Choose File**. You see a preview first. Nothing is added until you approve it.
+
+The full format is in [docs/school-import.md](docs/school-import.md).
+
+I also plan to add an import to calendar feature, so these deadlines can land on your calendar too. It is planned and not available yet.
+
+## Your data
+
+QuickToDo keeps your data on your Mac. The app's own Settings page says it lives only on this Mac. The app doesn't need an account.
+
+- **Back up:** Open Settings and click **Export Backup**. You get one JSON file.
+- **Restore:** Open Settings and click **Import Backup**. Restoring replaces everything in the app, so QuickToDo asks you to confirm first.
+- **Start fresh:** Settings has a **Clear Everything** button. It skips Trash, so export a backup first.
+
+Export a backup before you reinstall or move to a new Mac.
+
+## Project layout
+
+```
+QuickToDo/
+├── README.md
+├── docs/
+│   ├── getting-started.md
+│   ├── daily-workflow.md
+│   ├── school-import.md
+│   ├── keyboard-shortcuts.md
+│   └── screenshots/
+├── samples/
+│   ├── README.md
+│   └── sample-school-plan.json
+└── QuickToDo/
+    ├── QuickToDo.xcodeproj
+    ├── Fonts/
+    ├── Assets.xcassets/
+    ├── QuickTodoTests/
+    └── (Swift source files)
+```
+
+## Running the tests
+
+The project has a test target named `QuickTodoTests`. It covers the date parser, the Next Move logic, the planner, and the task model.
+
+1. Open `QuickToDo/QuickToDo.xcodeproj` in Xcode.
+2. Press **Command and U**.
+3. Open the Test navigator (Command and 6) to see each result.
+
+## Feedback
+
+I would love to hear how it works for you. If you find a bug or have an idea, open an issue on the GitHub page.
