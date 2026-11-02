@@ -559,7 +559,7 @@ After 30 days, QuickToDo removes old items from Trash when the app opens. Deleti
 
 **Buttons on a notification:**
 
-- **Mark Done** completes the task. It needs your Mac to be unlocked.
+- **Mark Done** completes the task. It needs your Mac to be unlocked. A task that is waiting on another task is left alone.
 - **Snooze 5 min** moves the due date to 5 minutes from now.
 
 Reminders are canceled when you complete or delete a task. They come back if you undo.
@@ -662,7 +662,7 @@ If the main window is open, QuickToDo shows you the new task.
 QuickToDo adds two actions you can use in the Shortcuts app, Spotlight, or Siri:
 
 - **Quick Add a Task** opens the Quick Add window.
-- **What's My Next Move** tells you which task to do next and why.
+- **What's My Next Move** tells you which task to do next and why. It skips tasks that are waiting on another task.
 
 ### Complete a task from a link
 
@@ -672,7 +672,7 @@ A link like this marks an open task done:
 quicktodo://complete?title=Read%20chapter%203&course=School
 ```
 
-The `title` is the task name. The `course` is the list name, and it's optional. Use it to tell apart tasks that share a title.
+A task that is waiting on another task is not completed by the link. The `title` is the task name. The `course` is the list name, and it's optional. Use it to tell apart tasks that share a title.
 
 ## Settings at a glance
 

@@ -104,6 +104,12 @@ struct QuickTodoApp: App {
             return
         }
 
+        // A task waiting on another open task can't be completed from a link.
+        guard !task.isBlocked(in: allTasks) else {
+            print("[DeepLink] Task is waiting on another task: \(task.title)")
+            return
+        }
+
         task.isCompleted = true
         task.completedAt = .now
         task.stage = .done

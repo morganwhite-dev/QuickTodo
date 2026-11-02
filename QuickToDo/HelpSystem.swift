@@ -24,7 +24,7 @@ enum QuickTodoHelpContent {
             color: Theme.accent,
             items: [
                 HelpGuideItem(title: "Quick Add", body: "Type a task in plain language, then press Return or Add. Example: essay friday 11:59pm #English !high. New categories like #English are created automatically the first time you use them."),
-                HelpGuideItem(title: "Detailed Task", body: "Use Detailed Task when you need notes, a precise due date, custom reminders, or more control before saving."),
+                HelpGuideItem(title: "Detailed Task", body: "Use Detailed Task when you need notes, a precise due date, a reminder, or more control before saving."),
                 HelpGuideItem(title: "Recurring Tasks", body: "In Detailed Task, turn on Repeats once a due date is set to bring a task back Daily, Weekdays, Weekly, or Monthly. Completing it leaves the finished one in Completed and schedules the next occurrence."),
                 HelpGuideItem(title: "Menu Bar", body: "Use the QuickTodo menu bar icon to capture a task without switching back to the main window."),
                 HelpGuideItem(title: "Global Hotkey", body: "Press ⌃⌥⌘ Space from any app to pop up Quick Add. It uses the same plain-language parsing and files uncategorized tasks into General.")
@@ -50,7 +50,7 @@ enum QuickTodoHelpContent {
                 HelpGuideItem(title: "Decision Board", body: "The amber Next Move card always shows the one task to do now: an overdue task if there is one, otherwise the soonest due. Start moves it to In Progress and Done completes it. Tasks sit in four columns: Capture (no due date), Ready (overdue or due within a week), Scheduled (due further out; they move up to Ready as the date gets within a week) and In Progress. Use the sort menu at the top right to order them by recommendation, due date, priority, or your own manual order."),
                 HelpGuideItem(title: "Today And Upcoming", body: "Today is overdue plus due-later-today work, with a progress ring and an Up Next card. Upcoming shows a 7-day strip and a timeline for the selected day. Gaps of 30 minutes or more between tasks appear as free time with a Plan this time button. Completing a task never turns its slot into extra free time."),
                 HelpGuideItem(title: "General And Lists", body: "General sorts captured tasks into High, Medium and Low lanes. Drag a note to another lane to change its priority. Lists shows every list on the left with its progress, and the selected list's open tasks on the right, grouped by when they're due."),
-                HelpGuideItem(title: "Categories", body: "Use Manage Categories to create, rename, recolor, delete, and reorder categories."),
+                HelpGuideItem(title: "Categories", body: "Use Manage Categories to create, recolor, delete, and reorder categories."),
                 HelpGuideItem(title: "Drag And Drop", body: "On the Decision Board, drag a task card to reorder it or drop it on another column to change its stage. In General, drag a note onto another priority lane. On Lists, drag a list in the left rail to reorder it. You can also right-click any task and choose Move to Today, Move to Tomorrow or Move to Column.")
             ]
         ),
@@ -72,7 +72,7 @@ enum QuickTodoHelpContent {
                 HelpGuideItem(title: "Edit Tasks", body: "Click any task to open the full editor with notes, steps, progress, due date, repeat, estimate, priority, list, dependency and reminder. Right-click for quick actions: Mark Done, Start Now, Move to Today / Tomorrow / Column, File as Someday and Delete."),
                 HelpGuideItem(title: "Steps", body: "In the editor, add checklist steps (or let on-device AI suggest a few) and tick them off as you go. The Progress slider in the editor tracks work you can't finish in one sitting, like a lab, and shows as a bar on the task."),
                 HelpGuideItem(title: "Dependencies", body: "Set \"Depends on\" only when a task genuinely can't start until another one is finished. A 🔗 badge marks the task being waited on; an ⌛ badge marks the one that's stuck. QuickTodo won't let you complete a task while what it depends on is still open."),
-                HelpGuideItem(title: "Delete Tasks", body: "Deleted tasks move to Trash, not gone for good. An Undo prompt appears briefly after deletion, and anything you miss can be restored from Trash (gear icon ▸ Trash) for 30 days. Emptying the Trash or deleting forever asks for confirmation first."),
+                HelpGuideItem(title: "Delete Tasks", body: "Deleted tasks move to Trash, not gone for good. An Undo prompt appears briefly after deletion, and anything you miss can be restored from Trash (Go ▸ Trash, or ⇧⌘T) for 30 days. Emptying the Trash or deleting forever asks for confirmation first."),
                 HelpGuideItem(title: "Reminders", body: "Tasks with due dates can schedule local reminders. If reminders do not appear, check macOS notification permission for QuickTodo."),
                 HelpGuideItem(title: "Settings", body: "Open QuickTodo ▸ Settings (⌘,), or the gear icon ▸ Settings, to mute completion sounds, launch at login, set your focus window, see the global hotkey, check notification status, import a school plan from JSON, back up or restore your data, or replay the welcome screen.")
             ]

@@ -43,8 +43,10 @@ struct WhatsNextMoveIntent: AppIntent {
         // Ready is now a real, user-curated stage (manually placed or auto-suggested
         // at creation) — prefer it, and only fall back to ranking unstaged tasks if
         // nothing has been marked Ready yet.
-        let candidate = active.first(where: { $0.resolvedStage == .ready })
-            ?? NextMoveEngine.suggested(from: active.filter { $0.resolvedStage == .general }, in: active, limit: 1).first
+        // Tasks that are waiting on another open task can't be started, so skip them.
+        let startable = active.filter { !$0.isBlocked(in: active) }
+        let candidate = startable.first(where: { $0.resolvedStage == .ready })
+            ?? NextMoveEngine.suggested(from: startable.filter { $0.resolvedStage == .general }, in: active, limit: 1).first
         guard let suggestion = candidate,
               let recommendation = NextMoveEngine.recommend(for: suggestion, in: active) else {
             return .result(dialog: "Nothing urgent right now — your board is clear.")
@@ -304,6 +306,9 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate, @un
         await MainActor.run {
             if let model = SwiftDataBridge.shared.modelContainer?.mainContext,
                let task = try? model.fetch(FetchDescriptor<TaskItem>(predicate: #Predicate { $0.id == uuid })).first {
+                // A task waiting on another open task can't be completed from a notification.
+                let openTasks = (try? model.fetch(FetchDescriptor<TaskItem>(predicate: #Predicate { !$0.isCompleted && $0.deletedAt == nil }))) ?? []
+                guard !task.isBlocked(in: openTasks) else { return }
                 task.isCompleted = true
                 task.completedAt = .now
                 task.stage = .done
