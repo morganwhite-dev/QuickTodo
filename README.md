@@ -207,3 +207,7 @@ The project has a test target named `QuickTodoTests`. It covers the date parser,
 ## Feedback
 
 I would love to hear how it works for you. If you find a bug, have an idea, or just want to tell me what helped, open an issue on the GitHub page. I built this for my own brain, so I'm very curious what works for yours.
+
+## License
+
+QuickToDo is licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE). You can read the code, run it, learn from it, and use it for personal, school, or other noncommercial purposes. You can't sell it or use it in a commercial product. If you want to use it commercially, open an issue and ask.
