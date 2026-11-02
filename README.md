@@ -43,20 +43,22 @@ You don't need to know how to code to use the app. Building it does take a few s
 
 ## What it does
 
+Every feature is explained step by step in [docs/features.md](docs/features.md).
+
 - **Quick Add in plain language.** Type `essay friday 11:59pm #English !high` and QuickToDo sets the due date, the list, and the priority for you.
 - **Global shortcut.** Press Control, Option, Command and Space from any app to open a small Quick Add window.
 - **Menu bar quick add.** Click the QuickToDo icon in your menu bar to add a task without opening the main window.
 - **Detailed tasks.** Add notes, a due date, reminders, a time estimate, a priority, a list, and checklist steps. You can also make a task repeat daily, on weekdays, weekly, or monthly.
 - **Decision Board.** Your main screen. It shows four columns: Capture, Ready, Scheduled, and In Progress. You can sort them by recommendation, due date, priority, or your own order.
 - **Next Move card.** An amber card at the top of the board that shows the one task to do now. An overdue task comes first. If nothing is overdue, the soonest due task wins.
-- **Next Move reasons.** When you open a task, QuickToDo suggests an action such as Start Now, Schedule, Break Into Steps, File as Someday, or Quick Win. It lists the reasons, and it only uses details you entered.
+- **Next Move reasons.** The Next Move card gives a one sentence reason for its pick. It only uses details you entered.
 - **Focus window.** In Settings, you can set the hours you keep for focused work. Next Move mentions them when a high priority task fits.
 - **General.** An inbox for tasks with no due date. It sorts them into High, Medium, and Low lanes. Drag a task between lanes to change its priority.
 - **Today.** Shows what's overdue and what's due later today. It has a progress ring and an Up Next card.
 - **Upcoming.** A 7 day planner. It shows a timeline for each day. Gaps of 30 minutes or more show up as free time, with a Plan this time button.
 - **Week summary.** Shows how many tasks are done this week, how much work is left, and how your time splits across lists.
-- **Lists.** Browse tasks by list. Create, rename, recolor, delete, and reorder lists.
-- **Dependencies.** Mark a task as waiting on another task. QuickToDo won't let you finish it while the other one is open.
+- **Lists.** Browse tasks by list. Create, recolor, delete, and reorder lists.
+- **Dependencies.** Mark a task as waiting on another task, and it stays locked until the first one is done. Next Move skips locked tasks, so you only see what you can do now. See [how dependencies work](docs/features.md#dependencies).
 - **Step suggestions.** On Macs that support Apple Intelligence, QuickToDo can suggest 3 to 5 checklist steps for a task. It runs on your Mac. If your Mac doesn't support it, the feature stays hidden.
 - **Reminders.** Tasks with due dates can send reminders through macOS notifications.
 - **Completed and Trash.** Finished tasks move to Completed. Deleted tasks sit in Trash for 30 days. Short Undo prompts appear after you complete or delete a task.
@@ -175,6 +177,7 @@ QuickToDo/
 ├── README.md
 ├── docs/
 │   ├── getting-started.md
+│   ├── features.md
 │   ├── daily-workflow.md
 │   ├── school-import.md
 │   ├── keyboard-shortcuts.md

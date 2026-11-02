@@ -61,10 +61,11 @@ The top bar has these tabs:
 - **Lists.** Tasks grouped by list.
 - **Completed.** Finished tasks.
 
-The gear icon at the top right opens Trash and Settings.
+The gear icon at the top right opens Settings. Trash is in the Go menu, or press Shift and Command and T.
 
 ## Next steps
 
+- Learn every feature in the [features guide](features.md).
 - Build a routine with the [daily workflow guide](daily-workflow.md).
 - Import assignments with the [school import guide](school-import.md).
 - Learn the keys in [keyboard shortcuts](keyboard-shortcuts.md).
