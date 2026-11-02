@@ -150,6 +150,52 @@ final class QuickDateParserTests: XCTestCase {
         XCTAssertNil(result.priority)
     }
 
+    // MARK: - Existing lists
+
+    private func parse(_ input: String, known: [String]) -> QuickDateParser.Result {
+        QuickDateParser.parse(input, knownCategories: known, now: fixedNow)
+    }
+
+    func testHashtagMatchesExistingMultiWordList() {
+        let r = parse("read chapter 3 #Cloud Computing", known: ["General", "Cloud Computing"])
+        XCTAssertEqual(r.category, "Cloud Computing")
+        XCTAssertEqual(r.title, "Read chapter 3")
+    }
+
+    func testHashtagMatchesExistingListInTheMiddle() {
+        let r = parse("#cloud computing finish lab tomorrow", known: ["Cloud Computing"])
+        XCTAssertEqual(r.category, "Cloud Computing")
+        XCTAssertEqual(r.title, "Finish lab")
+    }
+
+    func testHashtagWithoutSpacesMatchesExistingList() {
+        let r = parse("finish lab #cloudcomputing", known: ["Cloud Computing"])
+        XCTAssertEqual(r.category, "Cloud Computing")
+        XCTAssertEqual(r.title, "Finish lab")
+    }
+
+    func testBracketHashtagResolvesToExistingListName() {
+        let r = parse("finish lab #[cloud computing]", known: ["Cloud Computing"])
+        XCTAssertEqual(r.category, "Cloud Computing")
+    }
+
+    func testLongestExistingListWins() {
+        let r = parse("review #Cloud Computing Labs", known: ["Cloud Computing", "Cloud Computing Labs"])
+        XCTAssertEqual(r.category, "Cloud Computing Labs")
+    }
+
+    func testOneWordTagStaysOneWordWhenNoListMatches() {
+        // Only "Cloud" is a real list, so "Computing notes" stays in the title.
+        let r = parse("#Cloud Computing notes", known: ["Cloud"])
+        XCTAssertEqual(r.category, "Cloud")
+        XCTAssertEqual(r.title, "Computing notes")
+    }
+
+    func testUnknownHashtagStillMakesANewList() {
+        let r = parse("pay rent #Bills", known: ["Cloud Computing"])
+        XCTAssertEqual(r.category, "Bills")
+    }
+
     func testMonthDayInThePastRollsToNextYear() {
         // fixedNow is June 10, 2026 — "march 3rd" has already passed this year, so the
         // parser should infer March 3, 2027 rather than a date in the past.

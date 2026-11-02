@@ -98,6 +98,11 @@ final class QuickAddPanelController {
     }
 }
 
+/// Names of the lists that already exist, so `#Cloud Computing` can match one.
+private func existingListNames(_ context: ModelContext) -> [String] {
+    ((try? context.fetch(FetchDescriptor<CategoryItem>())) ?? []).map(\.name)
+}
+
 struct QuickAddPanelView: View {
     @Environment(\.modelContext) private var context
     @State private var text: String = ""
@@ -105,7 +110,7 @@ struct QuickAddPanelView: View {
     @FocusState private var focused: Bool
     let onClose: () -> Void
 
-    private var parsed: QuickDateParser.Result { QuickDateParser.parse(text) }
+    private var parsed: QuickDateParser.Result { QuickDateParser.parse(text, knownCategories: existingListNames(context)) }
     private var canAdd: Bool { !parsed.title.trimmingCharacters(in: .whitespaces).isEmpty }
 
     var body: some View {
@@ -167,7 +172,7 @@ struct QuickAddPanelView: View {
     }
 
     private func save() {
-        let parsed = QuickDateParser.parse(text)
+        let parsed = QuickDateParser.parse(text, knownCategories: existingListNames(context))
         guard !parsed.title.trimmingCharacters(in: .whitespaces).isEmpty else { return }
 
         let category = ensureCategoryExists(named: parsed.category ?? "General")
@@ -244,7 +249,7 @@ struct MenuBarView: View {
     }
 
     private func save() {
-        let parsed = QuickDateParser.parse(text)
+        let parsed = QuickDateParser.parse(text, knownCategories: existingListNames(context))
         guard !parsed.title.trimmingCharacters(in: .whitespaces).isEmpty else { return }
 
         let category = ensureCategoryExists(named: parsed.category ?? "General")

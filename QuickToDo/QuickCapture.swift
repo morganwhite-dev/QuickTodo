@@ -6,8 +6,8 @@ import SwiftUI
 
 /// Live parse of what the user typed: title, due, list, priority. When the text has no
 /// date of its own and a free slot was passed in ("+ Plan this time"), the slot wins.
-func parseCapture(_ text: String, prefill: Date?) -> QuickDateParser.Result {
-    let parsed = QuickDateParser.parse(text)
+func parseCapture(_ text: String, prefill: Date?, knownCategories: [String] = []) -> QuickDateParser.Result {
+    let parsed = QuickDateParser.parse(text, knownCategories: knownCategories)
     guard parsed.date == nil, let prefill else { return parsed }
     return QuickDateParser.Result(title: parsed.title, date: prefill, category: parsed.category, priority: parsed.priority)
 }
@@ -51,11 +51,51 @@ struct QuickCapture: View {
     var onClose: (() -> Void)? = nil
 
     @State private var text = ""
+    @State private var highlighted = 0
+    @State private var arrowed = false   // true once the arrow keys moved the highlight
     @State private var justAdded: String?
     @FocusState private var isFocused: Bool
 
-    private var parsed: QuickDateParser.Result { parseCapture(text, prefill: prefillDate) }
+    private var parsed: QuickDateParser.Result { parseCapture(text, prefill: prefillDate, knownCategories: categories.map(\.name)) }
     private var canAdd: Bool { !parsed.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+
+    /// The "#..." being typed right now (a # at the start or after a space, running to the end).
+    private var activeTag: (range: Range<String.Index>, fragment: String)? {
+        guard let hash = text.lastIndex(of: "#") else { return nil }
+        if hash != text.startIndex, !text[text.index(before: hash)].isWhitespace { return nil }
+        let fragment = String(text[text.index(after: hash)...])
+        if fragment.count > 24 || fragment.contains(where: { "![\"".contains($0) }) { return nil }
+        return (hash..<text.endIndex, fragment)
+    }
+
+    /// Existing lists that fit what follows the #, best matches first. Empty once the typed
+    /// name already is a list, so the dropdown gets out of the way.
+    private var suggestions: [CategoryItem] {
+        guard let tag = activeTag else { return [] }
+        let key = QuickDateParser.normalized(tag.fragment)
+        let lists = categories.filter { $0.name.caseInsensitiveCompare("General") != .orderedSame }
+        if key.isEmpty { return Array(lists.prefix(6)) }
+        if lists.contains(where: { QuickDateParser.normalized($0.name) == key }) { return [] }
+        let starts = lists.filter { QuickDateParser.normalized($0.name).hasPrefix(key) }
+        let inside = lists.filter { !QuickDateParser.normalized($0.name).hasPrefix(key) && QuickDateParser.normalized($0.name).contains(key) }
+        return Array((starts + inside).prefix(6))
+    }
+
+    private func choose(_ category: CategoryItem) {
+        guard let tag = activeTag else { return }
+        text.replaceSubrange(tag.range, with: "#\(category.name) ")
+    }
+
+    private func moveHighlight(_ step: Int) -> KeyPress.Result {
+        guard !suggestions.isEmpty else { return .ignored }
+        arrowed = true
+        highlighted = min(max(highlighted + step, 0), suggestions.count - 1)
+        return .handled
+    }
+
+    private func submit() {
+        if arrowed, suggestions.indices.contains(highlighted) { choose(suggestions[highlighted]) } else { capture() }
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -78,7 +118,15 @@ struct QuickCapture: View {
                     .font(Fonts.ui(18, .bold))
                     .foregroundStyle(Theme.ink)
                     .focused($isFocused)
-                    .onSubmit(capture)
+                    .onSubmit(submit)
+                    .onKeyPress(.downArrow) { moveHighlight(1) }
+                    .onKeyPress(.upArrow) { moveHighlight(-1) }
+                    .onKeyPress(.tab) {
+                        guard suggestions.indices.contains(highlighted) else { return .ignored }
+                        choose(suggestions[highlighted])
+                        return .handled
+                    }
+                    .onChange(of: text) { _, _ in highlighted = 0; arrowed = false }
                     .padding(.horizontal, 16)
                     .frame(height: 56)
                     .background(RoundedRectangle(cornerRadius: 10).fill(Theme.card))
@@ -89,6 +137,39 @@ struct QuickCapture: View {
                 .buttonStyle(PressableStyle(fill: Theme.amber, radius: 10, shadow: 4))
                 .disabled(!canAdd)
                 .opacity(canAdd ? 1 : 0.55)
+            }
+
+            if !suggestions.isEmpty, justAdded == nil {
+                VStack(spacing: 0) {
+                    Text("YOUR LISTS")
+                        .font(Fonts.ui(11, .heavy)).tracking(1.2).foregroundStyle(Theme.inkMuted)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 14).padding(.top, 10).padding(.bottom, 6)
+                    ForEach(Array(suggestions.enumerated()), id: \.element.id) { index, category in
+                        Button { choose(category) } label: {
+                            HStack(spacing: 10) {
+                                Circle().fill(Categories.color(for: category)).frame(width: 14, height: 14)
+                                    .overlay(Circle().strokeBorder(Theme.ink, lineWidth: 2))
+                                Text(category.name).font(Fonts.ui(15, .heavy)).lineLimit(1)
+                                Spacer(minLength: 8)
+                                if index == highlighted {
+                                    Text(arrowed ? "Return" : "Tab")
+                                        .font(Fonts.ui(11, .heavy)).foregroundStyle(Theme.inkMuted)
+                                }
+                            }
+                            .foregroundStyle(Theme.ink)
+                            .padding(.horizontal, 14).frame(height: 38)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background(index == highlighted ? Theme.amber : Color.clear)
+                            .contentShape(Rectangle())
+                        }
+                        .buttonStyle(HoverPlainStyle(hover: false))
+                        .onHover { if $0 { highlighted = index } }
+                    }
+                }
+                .padding(.bottom, 4)
+                .neoCard(Theme.card, radius: 10, shadow: 3)
+                .transition(.opacity)
             }
 
             if let justAdded {

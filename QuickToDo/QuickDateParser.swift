@@ -20,7 +20,10 @@ import Foundation
 enum QuickDateParser {
     struct Result { let title: String; let date: Date?; let category: String?; let priority: TaskPriority? }
 
-    static func parse(_ raw: String, now: Date = .now) -> Result {
+    /// `knownCategories` are the names of lists that already exist. A `#tag` that matches one
+    /// resolves to that list, even when the list name has spaces ("#Cloud Computing") or the
+    /// tag leaves the spaces out ("#cloudcomputing").
+    static func parse(_ raw: String, knownCategories: [String] = [], now: Date = .now) -> Result {
         let trimmed = raw.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else {
             return Result(title: "", date: nil, category: nil, priority: nil)
@@ -32,7 +35,7 @@ enum QuickDateParser {
         // 1) Priority/category can appear at the end in either order:
         //    "Essay tomorrow #English !high" OR "Essay tomorrow !high #English".
         let firstPriority = extractPriority(&working)
-        let category = extractCategory(&working)
+        let category = extractCategory(&working, known: knownCategories)
         let priority = firstPriority ?? extractPriority(&working)
 
         // 3) Date phrase — explicit month/day first, then today / tomorrow / weekday.
@@ -120,7 +123,39 @@ enum QuickDateParser {
 
     // MARK: - #category
 
-    private static func extractCategory(_ working: inout String) -> String? {
+    // Lowercased letters and digits only, so "Cloud Computing", "cloudcomputing" and
+    // "cloud-computing" all compare equal.
+    static func normalized(_ s: String) -> String {
+        s.lowercased().filter { $0.isLetter || $0.isNumber }
+    }
+
+    private static func canonical(_ tag: String, known: [String]) -> String {
+        let key = normalized(tag)
+        guard !key.isEmpty else { return tag }
+        return known.first { normalized($0) == key } ?? tag
+    }
+
+    // "#Cloud Computing" where a list called "Cloud Computing" exists. Longest names first so
+    // "Cloud Computing Labs" wins over "Cloud Computing". The name has to end at a space or
+    // the end of the text, so "#Cloud Computing notes" with only a "Cloud" list still means
+    // the list "Cloud" plus a title that starts with "Computing".
+    private static func extractKnownCategory(_ working: inout String, known: [String]) -> String? {
+        for name in known.sorted(by: { $0.count > $1.count }) {
+            let words = name.split(whereSeparator: \.isWhitespace).map { NSRegularExpression.escapedPattern(for: String($0)) }
+            guard !words.isEmpty else { continue }
+            let pattern = #"(?i)(?:^|\s)#"# + words.joined(separator: #"\s+"#) + #"(?=\s|$)"#
+            guard let r = try? NSRegularExpression(pattern: pattern) else { continue }
+            let ns = working as NSString
+            if let m = r.firstMatch(in: working, range: NSRange(location: 0, length: ns.length)) {
+                working = ns.replacingCharacters(in: m.range, with: "")
+                return name
+            }
+        }
+        return nil
+    }
+
+    private static func extractCategory(_ working: inout String, known: [String]) -> String? {
+        if let hit = extractKnownCategory(&working, known: known) { return hit }
         // No trailing $ anchor on any of these — a tag should be recognized wherever it
         // appears ("#school tomorrow 1am" and "tomorrow 1am #school" must parse the same),
         // not just when it happens to be the last thing typed. The bracket/quote forms are
@@ -143,7 +178,7 @@ enum QuickDateParser {
             if let m = r.firstMatch(in: working, range: full), m.numberOfRanges >= 2 {
                 let tag = ns.substring(with: m.range(at: 1))
                 working = ns.replacingCharacters(in: m.range, with: "")
-                return tag.trimmingCharacters(in: .whitespacesAndNewlines)
+                return canonical(tag.trimmingCharacters(in: .whitespacesAndNewlines), known: known)
             }
         }
         return nil
