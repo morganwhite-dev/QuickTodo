@@ -116,9 +116,9 @@ The menu bar window lets me add a task without leaving what I'm doing.
 
 ### School plan import
 
-![The Import School Plan preview with a list of tasks to approve](docs/screenshots/08-school-import.png)
+![The Import School Plan card in Settings](docs/screenshots/08-school-import.png)
 
-The import preview lets me check every task before it's added.
+Import School Plan lives in Settings. You choose a file, then check every task in a preview before it's added.
 
 ## How to run it
 
