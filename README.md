@@ -1,6 +1,8 @@
 # QuickToDo
 
-QuickToDo is a task management app for macOS. It helps you get tasks out of your head, see what to do next, and plan time for the things you enjoy.
+**A task app for the days when your list is so long you freeze.**
+
+QuickToDo is a task management app for macOS. It helps you get tasks out of your head, see what to do next, and plan time for the things you enjoy. When the Today screen is empty, it says "Rest is a feature." I mean it.
 
 ## Table of contents
 
@@ -27,17 +29,19 @@ I built QuickToDo to fix that for myself. It's my own workflow, written as an ap
 2. **See what matters next.** I don't want to pick from 40 items. I want the app to show me one task to start with, and tell me why.
 3. **Make room for things I enjoy.** Most to-do lists are all obligations. I plan free time on purpose, so rest and hobbies get a slot too.
 
+Fair warning: this is my own tool, built around my own brain. It might feel a little opinionated. That's on purpose.
+
 This isn't a medical tool. It doesn't treat or cure anything. It's just the setup that helps me get through my days.
 
 If it helps you too, I would love that. You're welcome to use it. You can also borrow any idea in it for your own workflow.
 
 ## Who it is for
 
-QuickToDo is for anyone who wants a calm place to keep tasks. That includes:
+QuickToDo is for anyone who wants a calm place to keep tasks. It might be you if:
 
-- Students who juggle classes and deadlines.
-- People who get overwhelmed when their task list gets long.
-- Anyone who wants to plan fun and rest next to work.
+- You juggle classes and deadlines.
+- Your task list gets long and you shut down.
+- You want fun and rest on the calendar next to work, not squeezed in after it.
 
 You don't need to know how to code to use the app. Building it does take a few steps, and the guide below walks you through each one.
 
@@ -78,43 +82,43 @@ I plan to add an import to calendar feature. The goal is to see my tasks and my 
 
 ![The Decision Board with the Next Move card and four columns](docs/screenshots/01-decision-board.png)
 
-The Decision Board shows the one task to do now, and the rest of my work in four columns.
+This is the screen I open first. One amber card tells me what to do now. Everything else waits in four columns, out of my way.
 
 ### General
 
 ![The General screen with High, Medium and Low lanes](docs/screenshots/02-general.png)
 
-General is where loose tasks land. I sort them by priority when I have a minute.
+General is my junk drawer. Everything lands here first, and I sort it by priority when I have a minute.
 
 ### Today
 
 ![The Today screen with a progress ring and the Up Next card](docs/screenshots/03-today.png)
 
-Today shows only what's overdue or due later today.
+Today is only today. When it's empty, the app tells me rest is a feature, and I believe it.
 
 ### Upcoming
 
 ![The Upcoming planner with a day timeline and a free time block](docs/screenshots/04-upcoming.png)
 
-Upcoming shows the week. Free gaps in a day show up so I can plan something into them.
+Upcoming shows the week. The gaps are my favorite part. Free time gets its own block, so I can plan something fun into it.
 
 ### Lists
 
 ![The Lists screen with the list rail and tasks grouped by due date](docs/screenshots/05-lists.png)
 
-Lists group tasks by area, such as a class, work, or personal.
+Lists keep each part of life in its own color: a class, work, or personal.
 
 ### Quick Capture
 
 ![The Quick Capture window with a task typed in plain words](docs/screenshots/06-quick-capture.png)
 
-Quick Capture turns plain words into a task with a date, a list, and a priority.
+Quick Capture is for when a thought shows up and I have about five seconds. I type it like a text message.
 
 ### Menu bar
 
 ![The menu bar window with the Quick Add field](docs/screenshots/07-menu-bar.png)
 
-The menu bar window lets me add a task without leaving what I'm doing.
+The menu bar window lets me dump a thought without leaving what I'm doing.
 
 ### School plan import
 
@@ -203,4 +207,4 @@ The project has a test target named `QuickTodoTests`. It covers the date parser,
 
 ## Feedback
 
-I would love to hear how it works for you. If you find a bug or have an idea, open an issue on the GitHub page.
+I would love to hear how it works for you. If you find a bug, have an idea, or just want to tell me what helped, open an issue on the GitHub page. I built this for my own brain, so I'm very curious what works for yours.
