@@ -1,6 +1,6 @@
 # Importing a school plan
 
-You can load a list of assignments, tests, and labs into QuickToDo from a JSON file. This saves you from typing each one. You can write the file by hand or with any tool you like.
+You can load a list of assignments, tests, and labs into QuickToDo from a JSON file. This saves you from typing each one. You can write the file by hand or with any tool you like. The format is simple and shown below.
 
 [Back to the README](../README.md)
 
@@ -10,7 +10,7 @@ Every task in the file becomes a QuickToDo task. Each course becomes its own lis
 
 ## The file format
 
-The file must be a JSON array. Each item in the array is one task.
+JSON is a plain text format for lists. The file is one list in square brackets, and each item inside it is one task.
 
 ### The sample
 
@@ -96,7 +96,7 @@ An imported task starts on the Decision Board. If it's overdue or due within 7 d
 
 ## Calendar import (planned)
 
-I plan to add an import to calendar feature. It would bring your due dates and your calendar into one view. It is not available yet, so for now use the JSON import above.
+I plan to add a calendar import so your due dates and calendar sit in one view. It is not built yet.
 
 ## Try it
 

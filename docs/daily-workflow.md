@@ -50,7 +50,7 @@ Check these things:
 
 If one day is packed, right click a task and choose **Move to Tomorrow**. You can also drag cards on the Decision Board.
 
-Coming later: I plan to add an import to calendar feature. Then your calendar events will sit next to your tasks, and the free time blocks will reflect real plans. It is not available yet.
+Planned: a calendar import, so free time blocks reflect your real events. It is not built yet.
 
 ## Step 5: Protect personal time
 

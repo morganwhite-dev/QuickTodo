@@ -124,29 +124,21 @@ The import preview lets me check every task before it's added.
 
 You build QuickToDo yourself from the source code. This needs a Mac and Xcode. Xcode is Apple's free app for building Mac apps. You can get it from the Mac App Store.
 
-### Requirements
+### What you need
 
 - A Mac running macOS 26.0 or later.
-- Xcode. The project was created with Xcode 27.0, so use that version or newer.
-- About 15 minutes the first time.
+- Xcode, version 27.0 or newer.
 
-### Steps
+### The short version
 
-1. Install Xcode from the Mac App Store. Open it once and let it finish any setup.
-2. Download the project. On the GitHub page, click the green **Code** button. Choose **Download ZIP**, then unzip the file. If you know Git, you can clone it instead: `git clone https://github.com/morganwhite-dev/QuickTodo.git`.
-3. Open the folder you unzipped. Go into the `QuickToDo` folder inside it.
-4. Double click `QuickToDo.xcodeproj`. Xcode opens.
-5. At the top of the Xcode window, check that the scheme says `QuickTodo` and the destination says **My Mac**. The scheme name is spelled `QuickTodo` in the project. That's expected.
-6. Press the **Run** button, which is the play triangle at the top left. You can also press Command and R.
-7. Wait for the build to finish. The first build takes a minute or two. QuickToDo then opens.
+1. Install Xcode from the Mac App Store and open it once.
+2. On this GitHub page, click the green **Code** button, then **Download ZIP**. Unzip the file.
+3. Open the `QuickToDo` folder inside it and double click `QuickToDo.xcodeproj`.
+4. Click the **Run** button, the play triangle at the top left.
 
-If Xcode shows a signing error, click the project name in the left sidebar. Open **Signing & Capabilities**. Under Team, pick your own Apple ID. The project ships with no team set, so every person picks their own.
+QuickToDo opens after the first build. It starts empty, so your list is yours from the first task.
 
-QuickToDo starts empty on first launch. Nothing is pre filled, so your list is yours from the first task.
-
-To keep the app, find it in Xcode under **Product, Show Build Folder in Finder**. You can then drag `QuickTodo.app` into your Applications folder.
-
-More detail is in [docs/getting-started.md](docs/getting-started.md).
+If you get stuck, the step by step guide has fixes for common problems: [docs/getting-started.md](docs/getting-started.md).
 
 ## How to use it in your own workflow
 
@@ -163,23 +155,18 @@ The full version, with examples, is in [docs/daily-workflow.md](docs/daily-workf
 
 ## Importing a school plan
 
-If you have a list of assignments, you can import them from a JSON file. Only `title` is required. A sample file is in [samples/sample-school-plan.json](samples/sample-school-plan.json), and [samples/README.md](samples/README.md) explains it.
+You can load a whole semester of assignments at once. You give QuickToDo a small text file in a format called JSON. It's a simple list of tasks, and you can write one by hand. A sample is in [samples/sample-school-plan.json](samples/sample-school-plan.json).
 
-To import, open Settings, find **Import School Plan**, and click **Choose File**. You see a preview first. Nothing is added until you approve it.
-
-The full format is in [docs/school-import.md](docs/school-import.md).
-
-I also plan to add an import to calendar feature, so these deadlines can land on your calendar too. It is planned and not available yet.
+To import it, open Settings, find **Import School Plan**, and click **Choose File**. You see a preview first, and nothing is added until you approve it. The format is explained in [docs/school-import.md](docs/school-import.md).
 
 ## Your data
 
-QuickToDo keeps your data on your Mac. The app's own Settings page says it lives only on this Mac. The app doesn't need an account.
+Everything stays on your Mac, and the app doesn't need an account.
 
-- **Back up:** Open Settings and click **Export Backup**. You get one JSON file.
+- **Back up:** Open Settings and click **Export Backup**. You get one file. Do this before you reinstall or move to a new Mac.
 - **Restore:** Open Settings and click **Import Backup**. Restoring replaces everything in the app, so QuickToDo asks you to confirm first.
 - **Start fresh:** Settings has a **Clear Everything** button. It skips Trash, so export a backup first.
 
-Export a backup before you reinstall or move to a new Mac.
 
 ## Project layout
 

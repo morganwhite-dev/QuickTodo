@@ -29,9 +29,7 @@ This guide takes you from nothing to a running QuickToDo and your first tasks. I
 
 ## What you see on first launch
 
-A welcome tour opens. It has a few pages about capture, the Decision Board, and Next Move. Swipe or click through it. You can replay it later in Settings with **Replay Welcome**.
-
-The app starts empty. Nothing is pre filled, so your first task is the first thing in your list.
+A short welcome tour opens. Click through it. You can replay it later in Settings with **Replay Welcome**. The app starts empty.
 
 ## Add your first task
 
@@ -39,7 +37,7 @@ The app starts empty. Nothing is pre filled, so your first task is the first thi
 2. Type: `read chapter 3 tomorrow 7pm #School !medium`
 3. Press Return.
 
-Command and N opens the Detailed Task form instead. Use it when you want notes, reminders, or exact settings.
+You can also capture from any app with the shortcut or the menu bar icon. See the [daily workflow guide](daily-workflow.md). Command and N opens the Detailed Task form when you want notes or reminders.
 
 QuickToDo reads your words. It sets the due date to tomorrow at 7 PM, files the task in a list named School, and sets the priority to medium. If the School list doesn't exist yet, QuickToDo creates it.
 
@@ -65,15 +63,9 @@ The top bar has these tabs:
 
 The gear icon at the top right opens Trash and Settings.
 
-## Capture from anywhere
-
-- **Shortcut.** Press Control, Option, Command and Space in any app. A Quick Add window opens.
-- **Menu bar.** Click the QuickToDo icon in the menu bar and type in the field.
-
 ## Next steps
 
 - Build a routine with the [daily workflow guide](daily-workflow.md).
 - Import assignments with the [school import guide](school-import.md).
 - Learn the keys in [keyboard shortcuts](keyboard-shortcuts.md).
 
-I plan to add an import to calendar feature in the future. It is not built yet.
