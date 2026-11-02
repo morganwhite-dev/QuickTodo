@@ -140,9 +140,9 @@ You build QuickToDo yourself from the source code. This needs a Mac and Xcode. X
 6. Press the **Run** button, which is the play triangle at the top left. You can also press Command and R.
 7. Wait for the build to finish. The first build takes a minute or two. QuickToDo then opens.
 
-If Xcode shows a signing error, click the project name in the left sidebar. Open **Signing & Capabilities**. Under Team, pick your own Apple ID, or choose to sign the app to run locally.
+If Xcode shows a signing error, click the project name in the left sidebar. Open **Signing & Capabilities**. Under Team, pick your own Apple ID. The project ships with no team set, so every person picks their own.
 
-When you run QuickToDo from Xcode, it builds a debug version. The first time you launch it, it fills the app with example tasks so the screens aren't empty. You can clear them in Settings with **Clear Everything**.
+QuickToDo starts empty on first launch. Nothing is pre filled, so your list is yours from the first task.
 
 To keep the app, find it in Xcode under **Product, Show Build Folder in Finder**. You can then drag `QuickTodo.app` into your Applications folder.
 

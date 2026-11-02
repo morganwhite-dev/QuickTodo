@@ -23,7 +23,7 @@ This guide takes you from nothing to a running QuickToDo and your first tasks. I
 
 ### If something goes wrong
 
-- **A signing error appears.** Click the project name in the left sidebar. Open **Signing & Capabilities**. Choose your own Apple ID as the Team, or choose to sign the app to run locally.
+- **A signing error appears.** Click the project name in the left sidebar. Open **Signing & Capabilities**. Choose your own Apple ID as the Team. The project ships with no team set.
 - **Xcode says your macOS is not new enough.** QuickToDo needs macOS 26.0 or later.
 - **The build fails right away.** Make sure you opened `QuickToDo.xcodeproj` and not a folder.
 
@@ -31,7 +31,7 @@ This guide takes you from nothing to a running QuickToDo and your first tasks. I
 
 A welcome tour opens. It has a few pages about capture, the Decision Board, and Next Move. Swipe or click through it. You can replay it later in Settings with **Replay Welcome**.
 
-Running from Xcode builds a debug version. On its first launch, that version adds example tasks so the screens aren't empty. To remove them, open Settings and use **Clear Everything**. That deletes every task and list, so only do it on a fresh install.
+The app starts empty. Nothing is pre filled, so your first task is the first thing in your list.
 
 ## Add your first task
 
