@@ -207,7 +207,7 @@ struct SettingsView: View {
                     }
 
                     SettingsCard(title: "Import School Plan", icon: "graduationcap.fill", accent: Theme.accent) {
-                        Text("Import school tasks from a JSON file (e.g. one Claude/Cowork built from a syllabus or Brightspace page). You'll preview every task before anything is added.")
+                        Text("Import school tasks from a JSON file (for example, a list built from a syllabus or Brightspace page). You'll preview every task before anything is added.")
                             .font(Fonts.ui(13, .medium))
                             .foregroundStyle(Theme.inkMuted)
                             .fixedSize(horizontal: false, vertical: true)
